@@ -95,3 +95,23 @@ public class AnalystTests
         Assert.Equal(7, pick.GetProperty("required").GetArrayLength());
     }
 }
+
+public class RuleBasedAnalystTests
+{
+    [Fact]
+    public async Task Picks_top_scores_with_at_most_two_per_sector()
+    {
+        var shortlist = Enumerable.Range(0, 12).Select(i =>
+        {
+            var c = TestData.Candidate($"T{i}", 0.001);
+            c.CombinedScore = 12 - i; // T0 best
+            c.News = [TestData.News(c.Stock.Ticker, "headline", 1)];
+            return c;
+        }).ToList(); // all "Technology"
+
+        var result = await new RuleBasedAnalyst().AnalyzeAsync(shortlist, TestData.Now, CancellationToken.None);
+
+        Assert.Equal(["T0", "T1"], result.Picks.Select(p => p.Ticker));
+        Assert.Equal(0m, result.EstimatedCostUsd);
+    }
+}

@@ -1,0 +1,6 @@
+<UserControl x:Class="StockScout.App.Views.ScreenScatterView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:sp="clr-namespace:ScottPlot.WPF;assembly=ScottPlot.WPF">
+    <sp:WpfPlot x:Name="ScatterPlot"/>
+</UserControl>
