@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/StockScout.App/StockScout.App.csproj" />
+    <Project Path="src/StockScout.Core/StockScout.Core.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/StockScout.Core.Tests/StockScout.Core.Tests.csproj" />
+  </Folder>
+</Solution>
